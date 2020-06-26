@@ -1,10 +1,17 @@
 package ru.qalearn.action;
 
 import com.typesafe.config.Config;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qalearn.utils.Configs;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MainClassAction {
@@ -26,21 +33,21 @@ public class MainClassAction {
         /**
          * задаем явное ожидание для элемента/условия, работает 1 раз
          */
-/*        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@type='submit'])[1]")));*/
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//button[@type='submit'])[1]")));
 
-/*        driver.get("https://www.selenium.dev/");
+        driver.get("https://www.selenium.dev/");
         driver.get("https://www.selenium.dev/downloads/");
         driver.navigate().to("https://www.selenium.dev/");
         driver.navigate().back();
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
-        driver.quit();*/
+        driver.quit();
 
         /**
          * способы получения элемента
          */
-/*        driver.get("https://en.wikipedia.org/wiki/Main_Page");
+        driver.get("https://en.wikipedia.org/wiki/Main_Page");
         WebElement element = driver.findElement(By.linkText("Log in"));
         WebElement element2 = driver.findElement(By.partialLinkText("Log"));
         WebElement element3 = driver.findElement(By.name("search"));
@@ -48,12 +55,12 @@ public class MainClassAction {
         WebElement element5 = driver.findElement(By.id("searchButton"));
         WebElement element6 = driver.findElement(By.tagName("input"));
         WebElement element7 = driver.findElement(By.cssSelector("div#simpleSearch input#searchButton"));
-        WebElement visitTheMain = driver.findElement(By.xpath("(//a[@href='/wiki/Main_Page'])[3]"));*/
+        WebElement visitTheMain = driver.findElement(By.xpath("(//a[@href='/wiki/Main_Page'])[3]"));
 
         /**
          * ввод текста и нажатие кнопки
          */
-/*        driver.findElement(By.xpath("//input[@id='searchButton']")).click();
+        driver.findElement(By.xpath("//input[@id='searchButton']")).click();
        driver.findElement(By.xpath("//input[@placeholder='Search Wikipedia']")).click();
         driver.findElement(By.xpath("//input[@placeholder='Search Wikipedia']")).sendKeys("values to send");
 
@@ -69,12 +76,11 @@ public class MainClassAction {
         System.out.println(driver.findElement(By.xpath("//div[@id='searchText']//input[1]")).getAttribute("value"));
         driver.findElement(By.xpath("//span[@class='oo-ui-indicatorElement-indicator oo-ui-indicator-clear']")).click();
         System.out.println(driver.findElement(By.xpath("//li[@id='n-help']//a[1]")).getText());
-        driver.findElement(By.xpath("//li[@id='n-help']//a[1]")).click();*/
+        driver.findElement(By.xpath("//li[@id='n-help']//a[1]")).click();
 
         /**
          * выбор чекбокса и проверка
          */
-/*
         driver.get("http://programmerbook.ru/html/input/type/checkbox/");
         driver.findElement(By.xpath("//span[text()='подарки за покупку']")).click();
         System.out.println(driver.findElement(By.xpath("//span[text()='С учётом доставки курьером']")).isSelected());
@@ -84,51 +90,48 @@ public class MainClassAction {
         List<WebElement> list = driver.findElements(By.xpath("//div[@class=\"exUseWindow-Main\"]"));
         list.get(1).click();
         list.forEach(webElement -> System.out.println(webElement.getText()));
-*/
 
         /**
          * получаем таблицу и работаем с ее данными
          */
-/*        driver.get("https://daruse.ru/html-table-generator");
+        driver.get("https://daruse.ru/html-table-generator");
         WebElement tableElement = driver.findElement(By.xpath("//table[@class='tftable']"));
         Table table = new Table(tableElement, driver);
         String value = table.getValueFromMapHeadingValue(3, "Заголовок 2");
         System.out.println(value);
 
-        List<List<WebElement>> list =  table.getRowWithsColumns();
-        System.out.println("size of table: rowNumber(" + list.size() + ") columnNumber(" + list.get(0).size() + ")");*/
+        List<List<WebElement>> list2 =  table.getRowWithsColumns();
+        System.out.println("size of table: rowNumber(" + list2.size() + ") columnNumber(" + list2.get(0).size() + ")");
 
         /**
          * действия со скрытыми элементами, перемещение
          */
-/*        driver.get("https://ru.ebay.com/");
+        driver.get("https://ru.ebay.com/");
         WebElement elmentlink = driver.findElement(By.xpath("(//a[@href='https://ru.ebay.com/b/Electronics/bn_7000259124'])[2]"));
-        WebElement element = driver.findElement(By.linkText("Log in"));
+        WebElement element30 = driver.findElement(By.linkText("Log in"));
         Actions actions = new Actions(driver);
         actions.moveToElement(elmentlink).build().perform();
         //вкладывание элемента
-        actions.dragAndDrop(element, elmentlink).build().perform();
+        actions.dragAndDrop(element30, elmentlink).build().perform();
         //перетаскивание элемента
-        actions.clickAndHold(element).moveToElement(elmentlink).release().build().perform();
+        actions.clickAndHold(element30).moveToElement(elmentlink).release().build().perform();
         //двойной клик
         actions.doubleClick(elmentlink);
         //нажатие правой кнопкой мыши
-        actions.contextClick();*/
+        actions.contextClick();
 
         /**
          * работа с javascript
          */
-/*
         driver.get("https://ru.ebay.com/");
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("window.scrollBy(0, 1000", "");
-*/
         /**
          * работа с alert
          */
-/*        driver.get("https://www.google.com/search?q=qwerty&oq=qwe&aqs=chrome.1.69i57j0l5j46j0.2371j0j8&sourceid=chrome&ie=UTF-8");
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("confirm('Are you sure?');");
+        driver.get("https://www.google.com/search?q=qwerty&oq=qwe&aqs=chrome.1.69i57j0l5j46j0.2371j0j8&sourceid=chrome&ie=UTF-8");
+        JavascriptExecutor jse3 = (JavascriptExecutor)driver;
+        jse3.executeScript("confirm('Are you sure?');");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -144,7 +147,34 @@ public class MainClassAction {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.switchTo().alert().dismiss();*/
+        driver.switchTo().alert().dismiss();
+
+        /**
+         * Переключение на новое открывшееся окно
+         */
+        driver.get("https://ru.ebay.com/");
+        driver.findElement(By.xpath("//span[text()='подарки за покупку']")).click();
+        String currentWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+        }
+        driver.switchTo().window(currentWindow);
+
+        /**
+         * Работа с новыми вкладками браузера
+         */
+        driver.get("https://ru.ebay.com/");
+        driver.findElement(By.xpath("//span[text()='подарки за покупку']")).click();
+        for (String tab : driver.getWindowHandles()) {
+            driver.switchTo().window(tab);
+        }
+
+        /**
+         * провверка состояния элемента
+         */
+        driver.get("http://programmerbook.ru/html/button/disabled/");
+        WebElement button = driver.findElement(By.xpath("//button[@type='button'])[1]"));
+        System.out.println(button.isEnabled());
     }
 
 }
